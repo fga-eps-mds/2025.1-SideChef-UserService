@@ -51,3 +51,10 @@ alembic upgrade head
 ```
 fastapi dev main.py
 ```
+
+### Comandos Adicionais
+
+1-Adicionar uma nova migração
+'''
+alembic revision --autogenerate -m "mensagem"
+'''
