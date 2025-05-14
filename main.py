@@ -44,6 +44,11 @@ def create_user(user: User):
     }
 
 
+@app.get("/JM")
+def funcaoTeste():
+    return "teste"
+
+
 # Endpoint GET para listar todos os usuários
 @app.get("/users")
 def get_users():
