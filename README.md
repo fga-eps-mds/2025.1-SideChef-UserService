@@ -1,35 +1,26 @@
 # 2025.1-SideChef-UserService
+## Descrição 
+Este repositório visa armazenar o microsserviço UserService do aplicativo SideChef, responsável pela gestão dos usuários do sistema
+
+## Tecnologias
+|||
+|-----------|--------|
+| __Linguagem__ | Python |
+| __Backend__ | FastAPI |
+| __Banco de Dados__| PostgreSQL |
 
 ## Como rodar o projeto
 
-### Criar ambiente virtual
-```
-python3 -m venv .venv
-```
+### 1. Instalar o Docker Engine
 
-### Ativar ambiente
-### For linux or mac
-```
-source .venv/bin/activate
-```
+Primeiramente instale o [Docker](https://www.docker.com) no seu computador.
+### 2. Clone o repositório
+Clone este repositório na sua máquina.
 
-### For windows
-```
-venv\Scripts\activate
-```
-
-### Instalar as dependências
-```
-pip install -r requirements.txt
-```
-
-### .env
-
-Subistituir valores em $.
+### 3. Crie o arquivo .env
+Dentro do reposítório, crie um arquivo chamado `.env` e adicione as informações enviadas pelos mantenedores, ou configure a própria pelo template:
 
 ```
-cp .env.local .env
-
 POSTGRESQL_USERNAME=$USERNAME_DB$
 POSTGRESQL_PASSWORD=$PASSWORD_DB$
 POSTGRESQL_SERVER=$SERVER$
@@ -39,22 +30,17 @@ DOMAIN=$DOMAIN$
 ENVIRONMENT=$local$
 BACKEND_CORS_ORIGINS=$http://localhost:PORT$
 JWT_SECRET_KEY=$JWT$
+```
+### 4. Execute o docker-compose up
+
+Na pasta do repositório execute o comando:
 
 ```
-
-### Opcional Rodar as migrações inicias para criar um usuário
-```
-alembic upgrade head
+docker-compose up
 ```
 
-### Rodar o código
-```
-fastapi dev main.py
-```
+### 5. Acesse a API
+Para acessar a API, utilize o *localhost* na porta *8000*:
 
-### Comandos Adicionais
+http://localhost:8000
 
-1-Adicionar uma nova migração
-'''
-alembic revision --autogenerate -m "mensagem"
-'''
