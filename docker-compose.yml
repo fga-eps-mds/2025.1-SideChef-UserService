@@ -13,6 +13,28 @@ services:
       - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD}
     networks:
       - docker-fastapi-base
+
+  fastapi:
+    container_name: userservice-api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: userservice-api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=true
+    volumes:
+      - ./:/userservice
+    depends_on:
+      - db
+    restart: on-failure
+    
+
+
+
 volumes:
   db-data:
 
