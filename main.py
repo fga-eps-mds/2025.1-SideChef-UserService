@@ -49,7 +49,7 @@ def create_user(user: User):
 def get_users():
     return users_db  # Retorna todos os usuários criados
 
-# Deletar usuário por email
+# Deletar usuário por email - Fazer depois DB
 @app.delete("/users/{email}")
 def delete_user(email: EmailStr):
     for i, user in enumerate(users_db):
