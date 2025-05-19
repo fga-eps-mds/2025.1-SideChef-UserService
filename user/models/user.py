@@ -1,12 +1,14 @@
-from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import Integer, String, Boolean, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, func
 from core.database import Base
-from datetime import datetime, timezone
+from datetime import datetime
 
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    username: Mapped[str] = mapped_column(String(32), unique=True, nullable=False)
-    created_at: Mapped[DateTime] = mapped_column(DateTime, default=datetime.now(timezone.utc), nullable=False)
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    password = Column(String, nullable=False)
+    email = Column(String, unique=True, nullable=False)
+    cpf = Column(String, unique=True, nullable=False)
+    created_at = Column(DateTime(timezone=True), default=func.now(), nullable=False)
