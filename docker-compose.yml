@@ -31,7 +31,8 @@ services:
     depends_on:
       - db
     restart: on-failure
-    
+    networks:
+      - docker-fastapi-base
 
 
 
