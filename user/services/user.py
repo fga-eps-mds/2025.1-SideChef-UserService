@@ -4,7 +4,7 @@ from user.schemas.user import UserCreate
 
 
 def create_user(db: Session, user: UserCreate) -> User:
-    new_user = User(name=user.name)
+    new_user = User(name=user.name, password=user.password, email=user.email, cpf=user.cpf)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
