@@ -2,8 +2,8 @@ services:
   db:
     image: bitnami/postgresql:17.4.0
     platform: linux/amd64
-    ports:
-      - ${POSTGRESQL_PORT}:5432
+    ports: 
+      - "5432:5432"
     restart: always
     volumes:
       - db-data:/bitnami/postgresql
@@ -11,8 +11,6 @@ services:
       - POSTGRESQL_DATABASE=${POSTGRESQL_DATABASE}
       - POSTGRESQL_USERNAME=${POSTGRESQL_USERNAME}
       - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD}
-    networks:
-      - docker-fastapi-base
 
   fastapi:
     container_name: userservice-api
@@ -31,14 +29,7 @@ services:
     depends_on:
       - db
     restart: on-failure
-    networks:
-      - docker-fastapi-base
-
-
 
 volumes:
   db-data:
 
-networks:
-  docker-fastapi-base:
-    driver: bridge
