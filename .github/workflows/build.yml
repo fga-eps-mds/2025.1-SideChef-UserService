@@ -27,9 +27,10 @@ jobs:
           POSTGRESQL_SERVER=localhost
           POSTGRESQL_PORT=5432
           POSTGRESQL_DATABASE=postgres
+          DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
           DOMAIN=localhost
           ENVIRONMENT=local
-          BACKEND_CORS_ORIGINS=http://localhost:8000
+          BACKEND_CORS_ORIGINS=https://localhost:5173
           JWT_SECRET_KEY=schedular
           EOF
 
