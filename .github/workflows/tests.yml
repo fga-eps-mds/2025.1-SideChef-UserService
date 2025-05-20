@@ -1,0 +1,48 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  test:
+    name: Run tests 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create .env
+        run: |
+          cat <<EOF > .env
+          POSTGRESQL_USERNAME=postgres
+          POSTGRESQL_PASSWORD=postgres
+          POSTGRESQL_SERVER=localhost
+          POSTGRESQL_PORT=5432
+          POSTGRESQL_DATABASE=postgres
+          DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
+          DOMAIN=localhost
+          ENVIRONMENT=local
+          BACKEND_CORS_ORIGINS=https://localhost:5173/
+          JWT_SECRET_KEY=schedula
+          EOF
+          
+      - name: Run docker compose
+        run: docker compose up -d --build
+
+      - name: Wait building
+        run: sleep 5
+
+      - name: Run tests using pytest
+        run: docker compose exec fastapi pytest tests/test.py
+
+      - name: Closing containers
+        if: always()
+        run: docker compose down
