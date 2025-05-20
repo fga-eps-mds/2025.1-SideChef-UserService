@@ -41,7 +41,7 @@ jobs:
         run: sleep 10
 
       - name: Test endpoint
-        run: curl --fail http://localhost:8000/health/ 
+        run: curl --fail http://0.0.0.0:8000/health/ 
 
       - name: Closing containers
         if: always()
