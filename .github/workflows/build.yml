@@ -38,7 +38,7 @@ jobs:
         run: docker compose up -d --build
 
       - name: Wait building
-        run: sleep 5
+        run: sleep 10
 
       - name: Test endpoint
         run: curl --fail http://localhost:8000/health/ 
