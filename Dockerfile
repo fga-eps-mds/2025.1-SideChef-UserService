@@ -1,4 +1,4 @@
-FROM python
+FROM python:3.13-slim
 
 WORKDIR /userservice
 
@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir -r /userservice/requirements.txt
 
 COPY . /userservice
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["fastapi", "dev", "main.py", "--host", "0.0.0.0", "--port", "8000"]
