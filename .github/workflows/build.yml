@@ -30,7 +30,7 @@ jobs:
           DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
           DOMAIN=localhost
           ENVIRONMENT=local
-          BACKEND_CORS_ORIGINS=https://localhost:5173
+          BACKEND_CORS_ORIGINS=https://localhost:8000
           JWT_SECRET_KEY=schedular
           EOF
 
