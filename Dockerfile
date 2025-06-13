@@ -6,6 +6,8 @@ COPY ./requirements.txt /userservice/requirements.txt
 
 RUN pip install --no-cache-dir -r /userservice/requirements.txt
 
+RUN pip install passlib[bcrypt]
+
 COPY . /userservice
 
 CMD ["fastapi", "dev", "main.py", "--host", "0.0.0.0", "--port", "8000"]

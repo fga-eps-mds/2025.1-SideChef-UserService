@@ -3,10 +3,10 @@ from datetime import datetime
 
 
 class UserCreate(BaseModel):
-    name: str                      # Nome simples
-    password: str                  # Senha como string simples
-    email: EmailStr                # Valida e-mail automaticamente
-    cpf: str                       # Inteiro positivo (para evitar CPF = 0)
+    name: str                      # Name as a simple string
+    password: str                  # Password as a simple string
+    email: EmailStr                # Automatically validate email
+    cpf: str                       # Positive integer (to avoid CPF = 0)
 
 class UserOut(BaseModel):
     id: int
