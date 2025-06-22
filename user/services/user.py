@@ -3,14 +3,14 @@ from user.models.user import User
 from user.schemas.user import UserCreate
 from fastapi import HTTPException
 from sqlalchemy.exc import IntegrityError
-from core.security import gerar_hash_senha
+from core.security import generate_password_hash 
 import traceback
 
 def create_user(db: Session, user: UserCreate) -> User:
-    senha_criptografada = gerar_hash_senha(user.password)
+    hashed_password = generate_password_hash(user.password)  
     new_user = User(
         name=user.name,
-        password=senha_criptografada,
+        password=hashed_password,
         email=user.email,
         cpf=user.cpf
     )
