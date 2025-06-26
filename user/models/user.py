@@ -10,5 +10,4 @@ class User(Base):
     name = Column(String, nullable=False)
     password = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False)
-    cpf = Column(String, unique=True, nullable=False)
     created_at = Column(DateTime(timezone=True), default=func.now(), nullable=False)
