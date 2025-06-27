@@ -43,14 +43,14 @@ def test_create_user(db):
         name="Pedro Amaral",
         email="pedro@example.com",
         password="123456",
-        cpf="12345678900"
+        
     )
     user = create_user(db, user_data)
 
     assert user.id is not None
     assert user.name == "Pedro Amaral"
     assert user.email == "pedro@example.com"
-    assert user.cpf == "12345678900"
+    
 
 def test_get_all_users(db):
     # Should start with an empty user list
@@ -62,7 +62,7 @@ def test_get_all_users(db):
         name="Maria",
         email="maria@example.com",
         password="senha123",
-        cpf="11122233344"
+        
     )
     create_user(db, user_data)
 

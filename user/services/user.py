@@ -12,7 +12,7 @@ def create_user(db: Session, user: UserCreate) -> User:
         name=user.name,
         password=hashed_password,
         email=user.email,
-        cpf=user.cpf
+        
     )
 
     db.add(new_user)
@@ -22,7 +22,7 @@ def create_user(db: Session, user: UserCreate) -> User:
         return new_user
     except IntegrityError:
         db.rollback()
-        raise HTTPException(status_code=409, detail="E-mail ou CPF já cadastrado.")
+        raise HTTPException(status_code=409, detail="E-mail já cadastrado.")
     
 def get_all_users(db: Session):
     return db.query(User).all()
