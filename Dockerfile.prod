@@ -1,0 +1,13 @@
+FROM python:3.13-slim
+
+WORKDIR /userservice
+
+COPY ./requirements.txt /userservice/requirements.txt
+
+RUN pip install --no-cache-dir -r /userservice/requirements.txt
+
+RUN pip install passlib[bcrypt]
+
+COPY . /userservice
+
+CMD ["fastapi", "run", "main.py", "--port", "10000"]

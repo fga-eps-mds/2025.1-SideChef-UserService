@@ -16,7 +16,7 @@ services:
     container_name: userservice-api
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.dev
     image: userservice-api
     env_file:
       - .env
