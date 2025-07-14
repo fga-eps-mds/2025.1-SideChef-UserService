@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-from core.config_loader import settings
 from user.routes.user import router as user_router  # Caminho corrigido
 from user.models.user import Base
 from core.database import engine
