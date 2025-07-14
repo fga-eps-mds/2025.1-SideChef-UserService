@@ -32,6 +32,6 @@ services:
 databases:
   - name: user-service_postgres
     plan: free
-    databaseName: userServiceSideChef
+    databaseName: userservice_sidechef
     ipAllowList: [] 
 
