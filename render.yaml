@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: user-service-sidechef
+    runtime: docker
+    plan: free
+    autoDeployTrigger: commit
+    branch: feature/config-deploy 
+    healthCheckPath: /health
+    dockerfilePath: ./Dockerfile.prod
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: user-service_postgres
+          property: connectionString
+      
+      - key: POSTGRESQL_DATABASE
+        fromDatabase:
+          name: user-service_postgres
+          property: database
+
+      - key: POSTGRESQL_USERNAME
+        fromDatabase:
+          name: user-service_postgres
+          property: user
+      
+      - key: POSTGRESQL_PASSWORD
+        fromDatabase:
+          name: user-service_postgres
+          property: password
+
+
+databases:
+  - name: user-service-postgres
+    plan: free
+    databaseName: userservice_sidechef
+    ipAllowList: [] 
+
